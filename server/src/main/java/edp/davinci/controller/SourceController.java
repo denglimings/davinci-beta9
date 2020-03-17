@@ -24,6 +24,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
+import edp.core.annotation.AuthIgnore;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -217,6 +218,7 @@ public class SourceController extends BaseController {
      */
     @ApiOperation(value = "test source", consumes = MediaType.APPLICATION_JSON_VALUE)
     @PostMapping(value = "/test", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @AuthIgnore
     public ResponseEntity testSource(@Valid @RequestBody SourceTest sourceTest,
                                      @ApiIgnore BindingResult bindingResult,
                                      @ApiIgnore @CurrentUser User user,
@@ -228,7 +230,8 @@ public class SourceController extends BaseController {
         }
 
         sourceService.testSource(sourceTest);
-        return ResponseEntity.ok(new ResultMap(tokenUtils).successAndRefreshToken(request));
+//        return ResponseEntity.ok(new ResultMap(tokenUtils).successAndRefreshToken(request));
+        return ResponseEntity.ok(sourceService.testSource(sourceTest));
     }
 
     /**
