@@ -97,10 +97,10 @@ spring:
   ## mail config cannot be null or empty
   ## some mailboxes need to be set separately password for the SMTP service)
   mail:
-    host: smtp.gdcattsoft.com
+    host: xxxx
     port: 25
-    username: dengliming@gdcattsoft.com
-    password: Qq19930502
+    username: xxxx
+    password: xxx
     nickname: davinci[相关]
 
     properties:
